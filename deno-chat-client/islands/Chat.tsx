@@ -12,6 +12,8 @@ interface Message {
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
+  const [text, setText] = useState("");
+
   const API_BASE_URL = "https://aalaap-deno-chat-api.deno.dev";
 
   const getMessages = useCallback(async () => {
@@ -24,13 +26,26 @@ export default function Chat() {
     getMessages();
   }, []);
 
+  const onSendMessage = useCallback(async () => {
+    await fetch(`${API_BASE_URL}/messages`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ text })
+    })
+  }, [text]);
+
   return (
     <div>
       <h2>Messages</h2>
       
       <ul>
-        { messages && messages.map( (msg) => <li key={msg}>{msg}</li>)}
+        { messages && messages.map( (msg) => <li key={msg.text}>{msg.text}</li>)}
       </ul>
+
+      <p><input type="text" value={text} onChange={ (e) => setText(e.target.value)} /></p>
+      <button onClick={onSendMessage}></button>
     </div>
   );
 }
