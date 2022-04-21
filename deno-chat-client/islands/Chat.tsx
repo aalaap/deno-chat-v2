@@ -12,7 +12,7 @@ interface Message {
 
 export default function Chat() {
   const [messages, setMessages] = useState<Message[]>([]);
-  const API_BASE_URL = Deno.env.get("API_BASE_URL");
+  const API_BASE_URL = "https://aalaap-deno-chat-api.deno.dev";
 
   const getMessages = useCallback(async () => {
     const res = await fetch(`${API_BASE_URL}/messages`);
