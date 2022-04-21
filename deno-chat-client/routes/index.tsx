@@ -1,15 +1,13 @@
 /** @jsx h */
 import { h } from "../client_deps.ts";
-import Counter from "../islands/Counter.tsx";
+import Chat from "../islands/Chat.tsx";
 
 export default function Home() {
   return (
     <div>
-      <p>
-        Welcome to `fresh`. Try update this message in the ./routes/index.tsx
-        file, and refresh.
-      </p>
-      <Counter start={3} />
+      <h1>Deno Chat</h1>
+      
+      <Chat />
     </div>
   );
 }
