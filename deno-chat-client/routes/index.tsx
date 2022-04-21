@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div>
       <h1>Deno Chat</h1>
-      
+
       <Chat />
     </div>
   );

@@ -1,10 +1,5 @@
 /** @jsx h */
-import {
-  h,
-  useCallback,
-  useEffect,
-  useState,
-} from "../client_deps.ts";
+import { h, useCallback, useEffect, useState } from "../client_deps.ts";
 
 interface Message {
   text: string;
@@ -30,9 +25,9 @@ export default function Chat() {
     await fetch(`${API_BASE_URL}/messages`, {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify({ text })
+      body: JSON.stringify({ text }),
     });
     setText("");
     getMessages();
@@ -41,12 +36,18 @@ export default function Chat() {
   return (
     <div>
       <h2>Messages</h2>
-      
+
       <ul>
-        { messages && messages.map( (msg) => <li key={msg.text}>{msg.text}</li>)}
+        {messages && messages.map((msg) => <li key={msg.text}>{msg.text}</li>)}
       </ul>
 
-      <p><input type="text" value={text} onChange={ (e) => setText(e.target.value)} /></p>
+      <p>
+        <input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+      </p>
       <button onClick={onSendMessage}>Send</button>
     </div>
   );
