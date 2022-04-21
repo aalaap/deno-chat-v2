@@ -33,7 +33,9 @@ export default function Chat() {
         "content-type": "application/json"
       },
       body: JSON.stringify({ text })
-    })
+    });
+    setText("");
+    getMessages();
   }, [text]);
 
   return (
@@ -45,7 +47,7 @@ export default function Chat() {
       </ul>
 
       <p><input type="text" value={text} onChange={ (e) => setText(e.target.value)} /></p>
-      <button onClick={onSendMessage}></button>
+      <button onClick={onSendMessage}>Send</button>
     </div>
   );
 }
