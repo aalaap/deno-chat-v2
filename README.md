@@ -1,32 +1,51 @@
-# deno-chat
+# deno-chat-v2
 
 This is a simple chat application built using [Deno](http://deno.land/) and
 deployed to [Deno Deploy](https://deno.com/deploy).
 
-This was originally based on code from Jack Herrington's [Deno Deploy Architecture Speedrun](https://www.youtube.com/watch?v=yZDvE0mP4Y4), but that is now outdated, so this repo contains code that's fixed and working as of Deno 1.21 and Deno Deploy beta 3.
+This version bundles the backend API into the fresh app itself, removing the need for a separate oak-based API project.
 
-I'll leave this repo here and fork it to make my own variant.
+> Note: This is WIP, so it does not work yet.
 
 ## Tech stack
 
 - [Deno](http://deno.land/): A modern runtime for JavaScript and TypeScript.
 - [Deno Deploy](https://deno.com/deploy): A distributed system that runs
   JavaScript, TypeScript, and WebAssembly at the edge, worldwide.
-- [oak](https://oakserver.github.io/oak/): A middleware framework for Deno’s
-  native HTTP server, inspired by [Koa](https://koajs.com/).
 - [fresh](https://fresh.deno.dev/): A web framework built on top of [Preact](https://preactjs.com/) that lets you build projects very fast, highly dynamic, and without the need of a build step.
 
-## Getting started 
+## Usage
+
+- Visit `https://your-deploy-url.deno.dev/` to see the "root" or default chat room.
+- Visit `https://your-deploy-url.deno.dev/room` to see chat only for the <room>.
+
+## Getting started
+
+To locally start the project:
+
+```bash
+deno run -A --watch --no-check main.ts
+```
+
+After adding, removing, or moving a page in the `routes` or directory, or
+adding, removing, or moving an island in the `islands` directory, run:
+
+```bash
+fresh manifest
+```
+
+## Deployment
 
 To deploy this to Deno Deploy:
 
-1. Create a project for the API and link it to `deno-chat-api/index.js`.
-2. Grab the API URL and change it in `deno-chat-client/islands/Chat.tsx`.
-3. Create a project for the client and link it to `deno-chat-client/main.ts`.
+1. Push code to GitHub.
+2. Grab the URL to your project's `/main.ts`, i.e. `https://raw.githubusercontent.com/username/deno-chat-v2/main/main.ts`
+3. Create a project in Deno Deploy.
+4. Link it to `deno-chat-client/main.ts`.
 
 ## Demo
 
-This should be live at [aalaap-deno-chat-client.deno.dev](https://aalaap-deno-chat-client.deno.dev) and the API should be running at [aalaap-deno.chat-api.deno.dev](https://aalaap-deno.chat-api.deno.dev).
+> This is still a work in progress, so there is no demo link yet.
 
 ## License
 

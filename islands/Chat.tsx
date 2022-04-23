@@ -1,18 +1,24 @@
 /** @jsx h */
 import { h, useCallback, useEffect, useState } from "../client_deps.ts";
+import { slugify } from "https://deno.land/x/slugify/mod.ts";
 
 interface Message {
   text: string;
 }
 
-export default function Chat() {
+interface ChatProps {
+  room: string;
+}
+
+export default function Chat(props: ChatProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [text, setText] = useState("");
 
   const API_BASE_URL = "https://aalaap-deno-chat-api.deno.dev";
+  const room = slugify(props.room);
 
   const getMessages = useCallback(async () => {
-    const res = await fetch(`${API_BASE_URL}/messages`);
+    const res = await fetch(`${API_BASE_URL}/messages?room=${room}`);
     const data = await res.json();
     setMessages(data);
   });
@@ -27,7 +33,7 @@ export default function Chat() {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ text }),
+      body: JSON.stringify({ text, room }),
     });
     setText("");
     getMessages();
@@ -35,7 +41,7 @@ export default function Chat() {
 
   return (
     <div>
-      <h2>Messages</h2>
+      <h2>{props.room} Messages</h2>
 
       <ul>
         {messages && messages.map((msg) => <li key={msg.text}>{msg.text}</li>)}
