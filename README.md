@@ -3,16 +3,20 @@
 This is a simple chat application built using [Deno](http://deno.land/) and
 deployed to [Deno Deploy](https://deno.com/deploy).
 
+This was originally based on code from Jack Herrington's [Deno Deploy Architecture Speedrun](https://www.youtube.com/watch?v=yZDvE0mP4Y4), but that is now outdated, so this repo contains code that's fixed and working as of Deno 1.21 and Deno Deploy beta 3.
+
+I'll leave this repo here and fork it to make my own variant.
+
 # Tech stack
 
 - [Deno](http://deno.land/): A modern runtime for JavaScript and TypeScript.
 - [Deno Deploy](https://deno.com/deploy): A distributed system that runs
   JavaScript, TypeScript, and WebAssembly at the edge, worldwide.
 - [oak](https://oakserver.github.io/oak/): A middleware framework for Deno’s
-  native HTTP server, inspired by Koa.
-- [fresh](https://fresh.deno.dev/): A web framework that lets you build projects
-  very fast, highly dynamic, and without the need of a build step.
+  native HTTP server, inspired by [Koa](https://koajs.com/).
+- [fresh](https://fresh.deno.dev/): A web framework built on top of [Preact](https://preactjs.com/) that lets you build projects very fast, highly dynamic, and without the need of a build step.
 
+# Credits
 # License
 
 Copyright 2022 Aalaap Ghag
