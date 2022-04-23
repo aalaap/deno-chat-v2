@@ -7,7 +7,7 @@ This was originally based on code from Jack Herrington's [Deno Deploy Architectu
 
 I'll leave this repo here and fork it to make my own variant.
 
-# Tech stack
+## Tech stack
 
 - [Deno](http://deno.land/): A modern runtime for JavaScript and TypeScript.
 - [Deno Deploy](https://deno.com/deploy): A distributed system that runs
@@ -16,8 +16,19 @@ I'll leave this repo here and fork it to make my own variant.
   native HTTP server, inspired by [Koa](https://koajs.com/).
 - [fresh](https://fresh.deno.dev/): A web framework built on top of [Preact](https://preactjs.com/) that lets you build projects very fast, highly dynamic, and without the need of a build step.
 
-# Credits
-# License
+## Getting started 
+
+To deploy this to Deno Deploy:
+
+1. Create a project for the API and link it to `deno-chat-api/index.js`.
+2. Grab the API URL and change it in `deno-chat-client/islands/Chat.tsx`.
+3. Create a project for the client and link it to `deno-chat-client/main.ts`.
+
+## Demo
+
+This should be live at [aalaap-deno-chat-client.deno.dev](https://aalaap-deno-chat-client.deno.dev) and the API should be running at [aalaap-deno.chat-api.deno.dev](https://aalaap-deno.chat-api.deno.dev).
+
+## License
 
 Copyright 2022 Aalaap Ghag
 
